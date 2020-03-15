@@ -20,7 +20,8 @@ namespace dockervscode
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://*:5000");
+                    webBuilder.UseStartup<Startup>();                    
                 });
     }
 }

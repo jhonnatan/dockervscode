@@ -2,9 +2,13 @@ version: '3.4'
 
 services:
   dockervscode:
+    container_name: dockervscode
     image: dockervscode
     build:
       context: .
       dockerfile: Dockerfile
+      target: debug
+    volumes:
+    - ../dockervscode/:/work/
     ports:
-      - 5000
+      - 5000:5000

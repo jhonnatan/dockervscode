@@ -1,5 +1,6 @@
 {
-    "configurations": [
+    "version": "0.2.0",
+    "configurations": [        
         {
             "name": "Docker .NET Core Launch",
             "type": "docker",
@@ -11,6 +12,26 @@
             "dockerServerReadyAction": {
                 "uriFormat": "%s://localhost:%s/WeatherForecast"
             }
-        }
+        },
+        {
+            "name": ".NET Core Docker Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickRemoteProcess}",
+            "pipeTransport": {
+                "pipeProgram": "docker",
+                "pipeArgs": [
+                    "exec",
+                    "-i",
+                    "dockervscode"
+                ],
+                "debuggerPath": "/root/vsdbg/vsdbg",
+                "pipeCwd": "${workspaceRoot}",
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/work": "${workspaceRoot}"
+            },            
+        },
     ]
 }
